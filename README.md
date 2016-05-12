@@ -25,3 +25,24 @@ knex migrate:latest
   -  knex insert stuff from req.body
   -  create a token
   -  send back id, email, name, token
+
+# Create Angular App
+
+- cdn angular + router
+- ng-app / module
+- two routes
+- html5mode
+- express wildcard route
+- maybe layout??
+- home controller / template
+  - show the current user's name
+- signup controller / template
+  - form / on submit
+  - http call
+    - handles success
+      - store token
+      - redirect to home page
+    - handles error
+      - show errors
+
+-------
