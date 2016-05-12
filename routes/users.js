@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var knex = require('../db')
 
 router.post('/signup', function(req, res, next) {
   const errors = []
@@ -12,11 +13,25 @@ router.post('/signup', function(req, res, next) {
     res.status(422).json({
       errors: errors
     })
+  } else {
+    knex('users')
+      .whereRaw('lower(email) = ?', req.body.email.toLowerCase())
+      .count()
+      .first()
+      .then(function (result) {
+         if (result.count === "0") {
+
+         } else {
+          res.status(422).json({
+            errors: ["Email has already been taken"]
+          })
+        }
+      })
   }
   // require knex
-  // check email, name, and password are all there
+  // √ check email, name, and password are all there
   //  if not, return an error
-  // check to see if the email already exists in the db
+  // √ check to see if the email already exists in the db
   //  if so, return an error
   // if we're OK
   //  hash password
