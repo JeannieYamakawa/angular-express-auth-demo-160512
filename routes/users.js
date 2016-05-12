@@ -85,4 +85,12 @@ router.post('/signup', function(req, res, next) {
   }
 });
 
+function validateUser(req) {
+
+}
+
+function createUser(req) {
+  
+}
+
 module.exports = router;
